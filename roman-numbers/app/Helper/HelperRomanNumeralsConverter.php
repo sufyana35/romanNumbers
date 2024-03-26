@@ -3,7 +3,7 @@
 namespace App\Helper;
 
 
-class RomanNumeralsConverterHelper
+class HelperRomanNumeralsConverter
 {
     public const MAPPING = [ 
         1000 => 'M', 

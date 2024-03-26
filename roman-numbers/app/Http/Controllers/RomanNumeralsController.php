@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Helper\RomanNumeralsConverterHelper;
+use App\Helper\HelperRomanNumeralsConverter;
 use App\Http\Requests\IntegerToRomanNumeralsRequest;
 use Illuminate\View\View;
 
@@ -26,7 +26,7 @@ class RomanNumeralsController extends Controller
 
         // If validation passes then convert amount to roman numerals
         if($validated) {
-            $amountToRomanNumeral = RomanNumeralsConverterHelper::convertIntegerToRomanNumerals($validated['integerAmount']);
+            $amountToRomanNumeral = HelperRomanNumeralsConverter::convertIntegerToRomanNumerals($validated['integerAmount']);
         }
 
         return view('integer_to_roman_numerals', [
