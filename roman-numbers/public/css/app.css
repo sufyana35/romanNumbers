@@ -3,6 +3,12 @@
 .container {
   max-width: 960px;
 }
+label {
+  font-size: large;
+}
+.text-muted {
+  font-size: small;
+}
 .site-header {
   background-color: rgba(0, 0, 0, .85);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
