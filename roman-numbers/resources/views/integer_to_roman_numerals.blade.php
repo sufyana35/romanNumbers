@@ -29,11 +29,13 @@
               @csrf
               <div class="form-group mt-5">
                 <label for="integerAmount">Enter Amount</label>
-                <input type="Number" class="form-control" id="integerAmount" name="integerAmount" aria-describedby="integerAmountHelp" required placeholder="Enter an amount">
+                <input type="Number" min=1 max=100000 class="form-control" id="integerAmount" name="integerAmount" aria-describedby="integerAmountHelp" required placeholder="Enter an amount">
                 <small id="integerAmountHelp" class="form-text text-muted">Enter an amount between 1 and 100,000 in an integer format</small>
               </div>
               <button type="submit" class="btn btn-primary mt-2">Submit</button>
             </form>
+
+            <h2>{{ $amountToRomanNumeral }}</h2>
 
             @if ($errors->any())
                 <div class="alert alert-danger">

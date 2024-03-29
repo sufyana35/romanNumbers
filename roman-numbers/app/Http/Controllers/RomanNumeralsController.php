@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\HelperRomanNumeralsConverter;
 use App\Http\Requests\IntegerToRomanNumeralsRequest;
+use App\Http\Requests\RomanNumeralsToIntegerRequest;
 use Illuminate\View\View;
 
 class RomanNumeralsController extends Controller
@@ -17,7 +18,11 @@ class RomanNumeralsController extends Controller
     }
 
     /**
-     * Integer to Roman Numerals
+     * Integer to Roman Numeral Amount Converter
+     *
+     * @param IntegerToRomanNumeralsRequest $request
+     * 
+     * @return View
      */
     public function encodeRomanNumerals(IntegerToRomanNumeralsRequest $request): View
     {
@@ -37,10 +42,18 @@ class RomanNumeralsController extends Controller
     /**
      * Roman Numerals to Integer
      */
-    public function decodeRomanNumerals(): View
+    public function decodeRomanNumerals(RomanNumeralsToIntegerRequest $request): View
     {
+        // Retrieve the validated input data...
+        $validated = $request->validated();
+
+        // If validation passes then convert amount to roman numerals
+        if($validated) {
+            $amountToInteger = HelperRomanNumeralsConverter::convertRomanNumeralsToInteger(strtoupper($validated['romanNumeralsAmount']));
+        }
+
         return view('roman_numerals_to_integer', [
-            'user' => ''
+            'amountToInteger' => $amountToInteger ?? null
         ]);
     }
 }

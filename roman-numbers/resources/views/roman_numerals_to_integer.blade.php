@@ -22,20 +22,31 @@
         </nav>
 
         <main role="main" class="container mt-4">
-            <div class="jumbotron">
-                <h1>Roman Numerals<h1>
-                <h3>Craft a small PHP application which takes an integer and returns its value in roman
-                    numerals. The application must also take a roman numeral string and return its equivalent
-                    value as an integer.</h3>
-                <p class="lead mt-4">The application should.</p>
-                <ul>
-                    <li>Either be a web or console application. Your choice!</li>
-                    <li>Be built using the Laravel or Yii (v1.1 or v2) framework</li>
-                    <li>Accept any whole integer between 1 - 100,000 or the corresponding roman numerals.</li>
-                    <li>Include documentation on how to use/install</li>
-                    <li>Be compatible with PHP 8+</li>
-                </ul>
-            </div>
+          <div class="jumbotron">
+            <h1>Roman Numerals To Integer<h1>
+              
+            <form method="POST">
+              @csrf
+              <div class="form-group mt-5">
+                <label for="integerAmount">Enter Amount</label>
+                <input type="text" class="form-control" id="romanNumeralsAmount" name="romanNumeralsAmount" aria-describedby="romanNumeralsAmountHelp" required placeholder="Enter an amount">
+                <small id="integerAmountHelp" class="form-text text-muted">Enter an amount between 1 and 100,000 in Roman Numerals</small>
+              </div>
+              <button type="submit" class="btn btn-primary mt-2">Submit</button>
+            </form>
+
+            <h2>{{ $amountToInteger }}</h2>
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+          </div>
         </main>
     
         <footer class="container py-5">
